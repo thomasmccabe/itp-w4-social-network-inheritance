@@ -5,7 +5,7 @@ class Post(object):
         self.text = text
         if timestamp == None:
             self.timestamp = datetime.now().strftime("%A, %b %d, %Y") 
-            #ex: Tuesday, Jan 10, 2017
+            
         elif timestamp != None:
             self.timestamp = timestamp.strftime("%A, %b %d, %Y")
         self.post_info = {'text' : self.text, 'timestamp' : self.timestamp}
@@ -18,16 +18,16 @@ class Post(object):
         self.user = user
 
 
-class TextPost(Post):  # Inherit properly
+class TextPost(Post):
     def __init__(self, text, timestamp=None):
         super(TextPost, self).__init__(text, timestamp)
         self.post_info = {'text' : self.text, 'timestamp' : self.timestamp}
 
-    def __str__(self):#how do I print out?
+    def __str__(self):
         return '@{first_name} {last_name}: "{text}"\n\t{timestamp}'.format(**self.post_info)
 
 
-class PicturePost(Post):  # Inherit properly
+class PicturePost(Post):
     def __init__(self, text, image_url, timestamp=None):
         super(PicturePost, self).__init__(text, timestamp)
         self.image_url = image_url
@@ -37,7 +37,7 @@ class PicturePost(Post):  # Inherit properly
         return '@{first_name} {last_name}: "{text}"\n\t{image_url}\n\t{timestamp}'.format(**self.post_info)
 
 
-class CheckInPost(Post):  # Inherit properly
+class CheckInPost(Post):
     def __init__(self, text, latitude, longitude, timestamp=None):
         super(CheckInPost, self).__init__(text, timestamp)
         self.latitude = latitude
